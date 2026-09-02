@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+/// 表单定义 - 采用 JSON Schema 文档化存储，区别于原系统的多表元数据模式
+model FormDefinition {
+  id          String   @id @default(cuid())
+  code        String   @unique
+  title       String
+  description String?
+  status      String   @default("draft") // draft | published | archived
+  schema      String   // JSON: FormSchema 完整定义
+  listConfig  String   @default("{}") // JSON: 列表页配置
+  version     Int      @default(1)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  submissions FormSubmission[]
+}
+
+/// 表单提交数据
+model FormSubmission {
+  id        String   @id @default(cuid())
+  formId    String
+  form      FormDefinition @relation(fields: [formId], references: [id], onDelete: Cascade)
+  data      String   // JSON: 提交的字段值
+  status    String   @default("submitted") // draft | submitted
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([formId])
+}

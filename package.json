@@ -1,0 +1,20 @@
+{
+  "name": "ai-form-builder",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI Form Builder - 低代码表单配置平台",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:web\"",
+    "dev:web": "npm run dev --workspace=@ai-form-builder/web",
+    "dev:server": "npm run dev --workspace=@ai-form-builder/server",
+    "build": "npm run build --workspaces",
+    "db:push": "npm run db:push --workspace=@ai-form-builder/server",
+    "db:seed": "npm run db:seed --workspace=@ai-form-builder/server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
