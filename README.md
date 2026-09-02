@@ -2,20 +2,19 @@
 
 低代码表单配置平台 — 基于 JSON Schema 文档化设计的表单构建器。
 
-## 与原系统（产品4.0）的架构差异
+## 技术栈
 
-| 维度 | 产品4.0 (原系统) | AI Form Builder (本项目) |
-|------|-----------------|------------------------|
-| 前端框架 | Vue 2 + Element UI | React 18 + Ant Design 5 |
-| 后端框架 | Java Spring Boot + MyBatis | Node.js Express + Prisma |
-| 数据模型 | 20+ 张元数据表 (onl_cgform_*) | JSON Schema 文档化存储 |
-| 状态管理 | Vuex | Zustand |
-| 拖拽排序 | SortableJS / vuedraggable | @dnd-kit |
-| 表单校验 | 自定义规则 + 后端校验 | Zod (后端) + Ant Design Form Rules (前端) |
-| 控件渲染 | 2400行 if-else 分支 | 组件注册表模式 |
-| 数据库 | MySQL 动态建表 | SQLite + JSON 数据存储 |
-| 分组系统 | 三表关联 (group/item/condition) | Schema 内嵌 Section 结构 |
-| 运行时引擎 | OnlineServer (6000行 Java) | SchemaEngine (TypeScript 模块化) |
+| 维度 | 方案 |
+|------|------|
+| 前端框架 | React 18 + Ant Design 5 |
+| 后端框架 | Node.js Express + Prisma |
+| 数据模型 | JSON Schema 文档化存储 |
+| 状态管理 | Zustand |
+| 拖拽排序 | @dnd-kit |
+| 表单校验 | Zod（后端）+ Ant Design Form Rules（前端） |
+| 控件渲染 | 组件注册表模式 |
+| 数据库 | SQLite + JSON 数据存储 |
+| 运行时引擎 | SchemaEngine（TypeScript 模块化） |
 
 ## 功能特性
 
